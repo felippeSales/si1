@@ -1,0 +1,16 @@
+package lab01;
+
+public class PoExtenso {
+
+	public String transformaExtenso(int i) {
+		String resultado = "";
+		
+		if(i == 0){
+			resultado += "zero";
+		}
+		
+		s
+		return resultado;
+	}
+
+}
