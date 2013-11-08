@@ -129,7 +129,8 @@ public class TestPorExtenso {
 	
 	public void testaEntre1001a1099() throws Exception{
 		assertEquals("mil e um", transformador.transformaExtenso("1001"));
-		
+		assertEquals("mil e cinquenta e quatro", transformador.transformaExtenso("1054"));
+		assertEquals("mil e noventa e nove", transformador.transformaExtenso("1099"));
 	}
 	
 	
