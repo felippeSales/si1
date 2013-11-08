@@ -20,17 +20,14 @@ public class TestPorExtenso {
 		
 		PorExtenso transformador = new PorExtenso();
 		
-		assertEquals(transformador.transformaExtenso("1"), "um");
-		assertEquals(transformador.transformaExtenso("2"), "dois");
-		assertEquals(transformador.transformaExtenso("3"), "tres");
-		assertEquals(transformador.transformaExtenso("4"), "quatro");
-		assertEquals(transformador.transformaExtenso("5"), "cinco");
-		assertEquals(transformador.transformaExtenso("6"), "seis");
-		assertEquals(transformador.transformaExtenso("7"), "sete");
-		assertEquals(transformador.transformaExtenso("8"), "oito");
-		assertEquals(transformador.transformaExtenso("9"), "nove");
-		assertEquals(transformador.transformaExtenso("10"), "dez");
+		String[] numeros = {"zero","um", "dois","tres", "quatro","cinco","seis","sete","oito","nove", "dez"};
+		
+		for (int i = 1; i < numeros.length; i++) {
+			assertEquals(transformador.transformaExtenso(i+""), numeros[i]);
+		}
 		
 	}
+	
+	
 
 }
