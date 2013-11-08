@@ -1,7 +1,6 @@
 package PorExtenso;
 
 import static org.junit.Assert.*;
-import junit.framework.Assert;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -80,13 +79,28 @@ public class TestPorExtenso {
 	@Test
 	public void testaEntradaErrada(){
 		
-		try{
-			transformador.transformaExtenso("xpto");
-			fail();
-		}catch(Exception e){
-			assertEquals(e.getMessage(), "Entrada invalida");
+		String[] palavras = {"Felipe", "a", "bbbb", "xpto"};
+		for (String string : palavras) {
+			try{
+				transformador.transformaExtenso(string);
+				fail();
+			}catch(Exception e){
+				assertEquals(e.getMessage(), "Entrada invalida");
+			}
 		}
 	}
 	
+	@Test
+	public void testa21a99()throws Exception{
+		assertEquals("vinte e um", transformador.transformaExtenso("21"));
+		
+		assertEquals("cinquenta e dois", transformador.transformaExtenso("52"));
+		
+		assertEquals("trinta e quatro", transformador.transformaExtenso("34"));
+		
+		assertEquals("noventa e nove",  transformador.transformaExtenso("99"));
+		
+		assertEquals("cem",  transformador.transformaExtenso("100"));
+	}
 	
 }
