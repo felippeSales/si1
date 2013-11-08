@@ -128,16 +128,14 @@ public class PorExtenso {
 
 		if(!("1").equals("" + numero.charAt(0))){
 
-			String aux = "";
+			String aux = numero.substring(0,numero.length() - 3);
+			String aux2 = numero.substring(numero.length() - 3, numero.length() );
 
-			aux += numero.charAt(0) + "";
-
-			if((limpaZeroAEsquerda(numero.substring(1))).length() < 3){				
-				resultado += listaNumeros.get(aux) + " mil e " +  transformaDezenas(limpaZeroAEsquerda(numero.substring(1)));
+			if(aux2.equals("000")){
+				resultado += transformaCentenas(aux) + " mil";
 			}else{
-				resultado += listaNumeros.get(aux) + " mil " +  transformaDezenas(limpaZeroAEsquerda(numero.substring(1)));
+				resultado += transformaCentenas(aux) + " mil e " +  transformaCentenas(limpaZeroAEsquerda(aux2));
 			}
-			
 		}else{
 			String aux = "";
 			

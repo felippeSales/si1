@@ -149,5 +149,15 @@ public class TestPorExtenso {
 		assertEquals("mil oitocentos e oitenta", transformador.transformaExtenso("1880"));
 	}
 	
+	@Test
+	public void testaEntre2000eoResto() throws Exception{
+		assertEquals("oitenta mil", transformador.transformaExtenso("80000"));
+		assertEquals("oitenta mil e oitocentos", transformador.transformaExtenso("80800"));
+		assertEquals("oitenta mil e oitocentos e oitenta", transformador.transformaExtenso("80880"));
+		assertEquals("oitocentos mil e oitenta e oito", transformador.transformaExtenso("800088"));
+	}
+	
+	
+	
 	
 }
