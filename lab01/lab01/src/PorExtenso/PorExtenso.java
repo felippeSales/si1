@@ -101,8 +101,15 @@ public class PorExtenso {
 
 	private String transformaCentenas(String numero) throws Exception{
 		String resultado = ""; 
-
-		if(!numero.equals("100")){
+		
+		if(numero.equals("100")){
+			resultado += "cem";
+			
+		}else if(listaNumeros.get(numero) != null){
+			resultado = listaNumeros.get(numero);
+		}else if(limpaZeroAEsquerda(numero).length() < 3){
+			resultado += transformaDezenas(numero);
+		}else if(!numero.equals("100")){
 
 			String aux = "";
 
@@ -110,8 +117,6 @@ public class PorExtenso {
 
 			resultado += listaNumeros.get(aux) + " e " +  transformaDezenas(limpaZeroAEsquerda(numero.substring(1)));
 
-		}else{
-			resultado += "cem";
 		}
 
 		return resultado;
@@ -127,13 +132,24 @@ public class PorExtenso {
 
 			aux += numero.charAt(0) + "";
 
-			resultado += listaNumeros.get(aux) + " mil e " +  transformaDezenas(limpaZeroAEsquerda(numero.substring(1)));
-
+			if((limpaZeroAEsquerda(numero.substring(1))).length() < 3){				
+				resultado += listaNumeros.get(aux) + " mil e " +  transformaDezenas(limpaZeroAEsquerda(numero.substring(1)));
+			}else{
+				resultado += listaNumeros.get(aux) + " mil " +  transformaDezenas(limpaZeroAEsquerda(numero.substring(1)));
+			}
+			
 		}else{
 			String aux = "";
-
-			resultado +=  "mil e " +  transformaCentenas(limpaZeroAEsquerda(numero.substring(1)));
-
+			
+			if((limpaZeroAEsquerda(numero.substring(1))).length() < 3 ||listaNumeros.get(numero.substring(1)) != null){
+				resultado +=  "mil e " +  transformaCentenas(limpaZeroAEsquerda(numero.substring(1)));
+			}else{
+				resultado +=  "mil " +  transformaCentenas(limpaZeroAEsquerda(numero.substring(1)));
+			}
+			
+			if(numero.equals("1100")){
+				resultado = "mil e cem";
+			}
 		}
 
 		return resultado;

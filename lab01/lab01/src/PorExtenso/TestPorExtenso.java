@@ -113,6 +113,8 @@ public class TestPorExtenso {
 		
 		assertEquals("novecentos e dois", transformador.transformaExtenso("902"));
 		
+		assertEquals("novecentos", transformador.transformaExtenso("900"));
+		
 		assertEquals("setecentos e cinquenta e dois", transformador.transformaExtenso("752"));
 		
 		assertEquals("duzentos e quatro", transformador.transformaExtenso("204"));
@@ -127,12 +129,25 @@ public class TestPorExtenso {
 		
 	}
 	
+	@Test
 	public void testaEntre1001a1099() throws Exception{
 		assertEquals("mil e um", transformador.transformaExtenso("1001"));
 		assertEquals("mil e cinquenta e quatro", transformador.transformaExtenso("1054"));
 		assertEquals("mil e noventa e nove", transformador.transformaExtenso("1099"));
 	}
 	
+	@Test
+	public void testaEntre1100a1999() throws Exception{
+		assertEquals("mil e cem", transformador.transformaExtenso("1100"));
+		assertEquals("mil cento e cinquenta e quatro", transformador.transformaExtenso("1154"));
+		assertEquals("mil cento e cinquenta e seis", transformador.transformaExtenso("1156"));
+		assertEquals("mil duzentos e um", transformador.transformaExtenso("1201"));
+		assertEquals("mil e novecentos", transformador.transformaExtenso("1900"));
+		assertEquals("mil trezentos e vinte", transformador.transformaExtenso("1320"));
+		assertEquals("mil novecentos e noventa e nove", transformador.transformaExtenso("1999"));
+		assertEquals("mil trezentos e oitenta", transformador.transformaExtenso("1380"));
+		assertEquals("mil oitocentos e oitenta", transformador.transformaExtenso("1880"));
+	}
 	
 	
 }
