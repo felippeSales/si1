@@ -5,8 +5,13 @@ import java.util.Hashtable;
 
 
 public class PorExtenso {
-
-	public String transformaExtenso(String numero) {
+		
+	public String transformaExtenso(String numero) throws Exception {
+		
+		
+		if(numero.equals("")){
+			throw new Exception("Entrada vazia");
+		}
 		
 		Hashtable<String, String> listaNumeros = new Hashtable<String, String>();
 		
