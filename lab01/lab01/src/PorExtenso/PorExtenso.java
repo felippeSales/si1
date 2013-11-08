@@ -11,7 +11,7 @@ public class PorExtenso {
 		String[] numeros = {"zero","um", "dois","tres", "quatro","cinco","seis","sete","oito"
 				,"nove", "dez","onze","doze", "treze", "catorze", "quinze", "dezesseis", "dezessete"
 				,"dezoito", "dezenove", "vinte","trinta","quarenta","cinquenta", "sessenta",
-				"setenta", "oitenta", "noventa", "cem","duzentos", "trezentos", "quatrocentos",
+				"setenta", "oitenta", "noventa", "cento","duzentos", "trezentos", "quatrocentos",
 				"quinhentos", "seiscentos", "setecentos","oitocentos", "novecentos", "mil"}; 
 
 		for (int j = 0; j < 21; j++) {
@@ -50,17 +50,15 @@ public class PorExtenso {
 			throw new Exception("Entrada invalida");
 		}
 
-		
-		if(listaNumeros.get(numero) == null){
-			String aux = "";
-			
-			aux += numero.charAt(0);
-		
-			for (int i = 0; i < numero.length() -1; i++ ){
-				aux += "0";
+		if(listaNumeros.get(numero) == null || numero.equals("100")){
+
+			if(numero.length() == 3){
+
+				resultado += transformaCentenas(numero);
+
+			}else{
+				resultado = transformaDezenas(numero);
 			}
-			
-			resultado += listaNumeros.get(aux) + " e " + listaNumeros.get(numero.charAt(1) + ""); 
 
 		}else{
 			resultado += listaNumeros.get(numero);
@@ -69,6 +67,52 @@ public class PorExtenso {
 		return resultado;
 	}
 
+	private String transformaDezenas(String numero){
+		String resultado = ""; 
 
+		if(numero.length() == 2 && listaNumeros.get(numero) == null){
+			String aux = "";
 
+			aux += numero.charAt(0) + "0";
+
+			resultado += listaNumeros.get(aux) + " e " + listaNumeros.get(numero.charAt(1) + ""); 
+		}else{
+			resultado += listaNumeros.get(numero);
+		}
+
+		return resultado;
+	}
+
+	private String limpaZeroAEsquerda(String numero){
+
+		if (numero.length() > 0) {
+
+			if ((numero.charAt(0)+"").equals("0")) {
+
+				return limpaZeroAEsquerda(numero.substring(1));
+			}
+		}
+
+		return numero;
+
+	}
+
+	private String transformaCentenas(String numero) throws Exception{
+		String resultado = ""; 
+
+		if(!numero.equals("100")){
+
+			String aux = "";
+
+			aux += numero.charAt(0)  + "00";
+
+			resultado += listaNumeros.get(aux) + " e " +  transformaDezenas(limpaZeroAEsquerda(numero.substring(1)));
+			
+		}else{
+			resultado += "cem";
+		}
+
+		return resultado;
+
+	}
 }

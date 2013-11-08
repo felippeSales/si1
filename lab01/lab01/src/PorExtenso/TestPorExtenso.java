@@ -91,7 +91,7 @@ public class TestPorExtenso {
 	}
 	
 	@Test
-	public void testa21a99()throws Exception{
+	public void testa21a99() throws Exception{
 		assertEquals("vinte e um", transformador.transformaExtenso("21"));
 		
 		assertEquals("cinquenta e dois", transformador.transformaExtenso("52"));
@@ -100,7 +100,29 @@ public class TestPorExtenso {
 		
 		assertEquals("noventa e nove",  transformador.transformaExtenso("99"));
 		
-		assertEquals("cem",  transformador.transformaExtenso("100"));
+		assertEquals("quarenta e quatro",  transformador.transformaExtenso("44"));
+	}
+	
+	@Test
+	public void testaEntre101a999() throws Exception{
+		assertEquals("cento e um", transformador.transformaExtenso("101"));
+		
+		assertEquals("cento e dois", transformador.transformaExtenso("102"));
+		
+		assertEquals("cento e dez", transformador.transformaExtenso("110"));
+		
+		assertEquals("novecentos e dois", transformador.transformaExtenso("902"));
+		
+		assertEquals("setecentos e cinquenta e dois", transformador.transformaExtenso("752"));
+		
+		assertEquals("duzentos e quatro", transformador.transformaExtenso("204"));
+		
+		assertEquals("duzentos e vinte e dois", transformador.transformaExtenso("222"));
+		
+		assertEquals("novecentos e noventa e nove", transformador.transformaExtenso("999"));
+		
+		assertEquals("oitocentos e vinte e seis", transformador.transformaExtenso("826"));
+		
 	}
 	
 }
