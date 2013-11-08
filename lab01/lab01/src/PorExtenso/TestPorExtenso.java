@@ -76,4 +76,17 @@ public class TestPorExtenso {
 		}catch(Exception e){}
 
 	}
+	
+	@Test
+	public void testaEntradaErrada(){
+		
+		try{
+			transformador.transformaExtenso("xpto");
+			fail();
+		}catch(Exception e){
+			assertEquals(e.getMessage(), "Entrada invalida");
+		}
+	}
+	
+	
 }
