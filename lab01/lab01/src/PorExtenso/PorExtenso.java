@@ -52,30 +52,16 @@ public class PorExtenso {
 
 		if(listaNumeros.get(numero) == null || numero.equals("100")){
 
-			if(numero.length() == 3){
+			if(numero.length() <= 6 && numero.length() >= 4){
 
+				resultado += transformaMilhar(numero);
+
+			}else if(numero.length() == 3){
 				resultado += transformaCentenas(numero);
-
 			}else{
-				resultado = transformaDezenas(numero);
+				resultado += transformaDezenas(numero);
 			}
 
-		}else{
-			resultado += listaNumeros.get(numero);
-		}
-
-		return resultado;
-	}
-
-	private String transformaDezenas(String numero){
-		String resultado = ""; 
-
-		if(numero.length() == 2 && listaNumeros.get(numero) == null){
-			String aux = "";
-
-			aux += numero.charAt(0) + "0";
-
-			resultado += listaNumeros.get(aux) + " e " + listaNumeros.get(numero.charAt(1) + ""); 
 		}else{
 			resultado += listaNumeros.get(numero);
 		}
@@ -97,6 +83,22 @@ public class PorExtenso {
 
 	}
 
+	private String transformaDezenas(String numero){
+		String resultado = ""; 
+
+		if(numero.length() == 2 && listaNumeros.get(numero) == null){
+			String aux = "";
+
+			aux += numero.charAt(0) + "0";
+
+			resultado += listaNumeros.get(aux) + " e " + listaNumeros.get(numero.charAt(1) + ""); 
+		}else{
+			resultado += listaNumeros.get(numero);
+		}
+
+		return resultado;
+	}
+
 	private String transformaCentenas(String numero) throws Exception{
 		String resultado = ""; 
 
@@ -107,7 +109,7 @@ public class PorExtenso {
 			aux += numero.charAt(0)  + "00";
 
 			resultado += listaNumeros.get(aux) + " e " +  transformaDezenas(limpaZeroAEsquerda(numero.substring(1)));
-			
+
 		}else{
 			resultado += "cem";
 		}
@@ -115,4 +117,26 @@ public class PorExtenso {
 		return resultado;
 
 	}
+
+	private String transformaMilhar(String numero) throws Exception{
+		String resultado = ""; 
+
+		if(!("1").equals("" + numero.charAt(0))){
+
+			String aux = "";
+
+			aux += numero.charAt(0) + "";
+
+			resultado += listaNumeros.get(aux) + " mil e " +  transformaDezenas(limpaZeroAEsquerda(numero.substring(1)));
+
+		}else{
+			String aux = "";
+
+			resultado +=  "mil e " +  transformaCentenas(limpaZeroAEsquerda(numero.substring(1)));
+
+		}
+
+		return resultado;
+	}
+
 }
