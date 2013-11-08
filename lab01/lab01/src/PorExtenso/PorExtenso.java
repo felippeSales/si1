@@ -38,6 +38,8 @@ public class PorExtenso {
 
 		String resultado = "";
 
+		numero = limpaZeroAEsquerda(numero);
+		
 		adicionaNoMapa();
 
 		if(numero.equals("")){
@@ -51,9 +53,9 @@ public class PorExtenso {
 		}
 
 		if(listaNumeros.get(numero) == null || numero.equals("100")){
-
-			if(numero.length() <= 6 && numero.length() >= 4){
-
+			if(numero.length() > 6){
+				resultado += transformaMilhoes(numero);
+			}else if(numero.length() <= 6 && numero.length() >= 4){
 				resultado += transformaMilhar(numero);
 
 			}else if(numero.length() == 3){
@@ -150,6 +152,37 @@ public class PorExtenso {
 			}
 		}
 
+		return resultado;
+	}
+
+	private String transformaMilhoes(String numero) throws Exception{
+		String resultado = "";
+
+		if(!("1").equals("" + numero.charAt(0))){
+
+			String aux = numero.substring(0,numero.length() - 6);
+			String aux2 = numero.substring(numero.length() - 6, numero.length() );
+
+		
+			if(aux2.equals("000")){
+				resultado += transformaCentenas(aux) + " milhões";
+			}else{
+				resultado += transformaCentenas(aux) + " milhões e " +  transformaMilhar(limpaZeroAEsquerda(aux2));
+			}
+		}/*else{
+			String aux = "";
+			
+			if((limpaZeroAEsquerda(numero.substring(1))).length() < 3 ||listaNumeros.get(numero.substring(1)) != null){
+				resultado +=  "mil e " +  transformaCentenas(limpaZeroAEsquerda(numero.substring(1)));
+			}else{
+				resultado +=  "mil " +  transformaCentenas(limpaZeroAEsquerda(numero.substring(1)));
+			}
+			
+			if(numero.equals("1100")){
+				resultado = "mil e cem";
+			}
+		}
+*/
 		return resultado;
 	}
 

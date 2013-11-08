@@ -29,6 +29,7 @@ public class TestPorExtenso {
 		try{
 			for (int i = 1; i < numeros.length; i++) {
 				assertEquals(transformador.transformaExtenso(i+""), numeros[i]);
+				
 			}
 		}catch(Exception e){}
 
@@ -94,6 +95,8 @@ public class TestPorExtenso {
 	public void testa21a99() throws Exception{
 		assertEquals("vinte e um", transformador.transformaExtenso("21"));
 		
+		assertEquals("vinte e um", transformador.transformaExtenso("021"));
+		
 		assertEquals("cinquenta e dois", transformador.transformaExtenso("52"));
 		
 		assertEquals("trinta e quatro", transformador.transformaExtenso("34"));
@@ -150,11 +153,27 @@ public class TestPorExtenso {
 	}
 	
 	@Test
-	public void testaEntre2000eoResto() throws Exception{
+	public void testaEntre2000ate999999() throws Exception{
 		assertEquals("oitenta mil", transformador.transformaExtenso("80000"));
 		assertEquals("oitenta mil e oitocentos", transformador.transformaExtenso("80800"));
 		assertEquals("oitenta mil e oitocentos e oitenta", transformador.transformaExtenso("80880"));
 		assertEquals("oitocentos mil e oitenta e oito", transformador.transformaExtenso("800088"));
+	}
+	
+	@Test
+	public void testaMaisde7Casas() throws Exception{
+		assertEquals("oitenta mil", transformador.transformaExtenso("80000"));
+		assertEquals("oitenta mil e oitocentos", transformador.transformaExtenso("80800"));
+		assertEquals("oitenta mil e oitocentos e oitenta", transformador.transformaExtenso("80880"));
+		assertEquals("oitocentos mil e oitenta e oito", transformador.transformaExtenso("800088"));
+	}
+	
+	@Test
+	public void testaMaisde8Casas() throws Exception{
+		assertEquals("noventa milhões noventa mil e nove", transformador.transformaExtenso("90090009"));
+		//assertEquals("oitenta mil e oitocentos", transformador.transformaExtenso("80800"));
+		//assertEquals("oitenta mil e oitocentos e oitenta", transformador.transformaExtenso("80880"));
+		//assertEquals("oitocentos mil e oitenta e oito", transformador.transformaExtenso("800088"));
 	}
 	
 	
