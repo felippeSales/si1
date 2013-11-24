@@ -8,4 +8,8 @@ libraryDependencies ++= Seq(
   cache
 )     
 
+val appDependencies = Seq(
+  javaEbean	
+)
+
 play.Project.playJavaSettings
