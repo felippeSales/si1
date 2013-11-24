@@ -2,9 +2,9 @@
 
 @import helper._
 
-@main("Todo list") {
+@main("Lista de afazeres") {
     
-    <h1>@tasks.size() task(s)</h1>
+    <h1>@tasks.size() tarefa(s)</h1>
     
     <ul>
         @for(task <- tasks) {
@@ -12,19 +12,19 @@
                 @task.label
                 
                 @form(routes.Application.deleteTask(task.id)) {
-                    <input type="submit" value="Delete">
+                    <input type="submit" value="Apagar">
                 }
             </li>
         }
     </ul>
     
-    <h2>Add a new task</h2>
+    <h2>Adicione uma nova tarefa</h2>
     
     @form(routes.Application.newTask()) {
         
-        @inputText(taskForm("label")) 
+        @inputText(taskForm("Descrição:")) 
         
-        <input type="submit" value="Create">
+        <input type="submit" value="Criar">
         
     }
     
