@@ -16,7 +16,7 @@ public class Application extends Controller {
 	}
 
 	public static Result tasks() {
-		return TODO;
+		return redirect(routes.Application.index());
 	}
 
 	public static Result newTask() {
@@ -27,6 +27,11 @@ public class Application extends Controller {
 			Task.create(filledForm.get());
 			return redirect(routes.Application.tasks());
 		}
+	}
+	
+	public static Result updateTask(Long id) {
+		Task.update(id);
+		return redirect(routes.Application.tasks());
 	}
 
 	public static Result deleteTask(Long id) {
