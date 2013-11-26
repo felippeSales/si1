@@ -1,0 +1,62 @@
+h1 {
+    color: #333;
+}
+
+p {
+    color: #666;
+}
+
+#grad1{
+	height:1000px;
+	background: -webkit-linear-gradient(#3399FF, white); /* For Safari */
+	background: -o-linear-gradient(#3399FF, white); /* For Opera 11.1 to 12.0 */
+	background: -moz-linear-gradient(#3399FF, white); /* For Firefox 3.6 to 15 */
+	background: linear-gradient(#3399FF, white); /* Standard syntax (must be last) */
+}
+
+p.pos_fixed
+{
+position:fixed;
+top:30px;
+right:5px;
+}
+
+
+div.box
+{
+
+
+width:400px;
+padding:10px;
+border:5px solid gray;
+margin:0px;
+}
+
+
+
+
+.coluna
+{
+
+
+-moz-column-count:1; /* Firefox */
+-webkit-column-count:1; /* Safari and Chrome */
+column-count:1;
+
+-moz-column-gap:40px; /* Firefox */
+-webkit-column-gap:40px; /* Safari and Chrome */
+column-gap:40px;
+
+-moz-column-rule:4px outset #404040 ; /* Firefox */
+-webkit-column-rule:4px outset #404040 ; /* Safari and Chrome */
+column-rule:4px outset #404040 ;
+}
+
+fix
+{
+position:absolute;
+left:100px;
+top:150px;
+}
+
+}
